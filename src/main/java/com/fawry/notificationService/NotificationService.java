@@ -3,14 +3,16 @@ package com.fawry.notificationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.env.Environment;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 @Slf4j
-@Service
+@Component
 @RequiredArgsConstructor
 public class NotificationService {
 
@@ -18,6 +20,7 @@ public class NotificationService {
     private final JavaMailSender emailSender;
     private final Environment environment;
 
+    @KafkaListener(topics = "notificationTopic" ,groupId = "groupId")
     public void send(NotificationRequest notificationRequest){
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("${spring.mail.username}");
