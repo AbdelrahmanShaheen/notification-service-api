@@ -24,6 +24,48 @@ The notification service is a Spring Boot application designed to handle notific
 - [API DOC](http://localhost:8080/v3/api-docs)
 - [Swagger UI](http://localhost:8080/swagger-ui/index.html)
 
+## Project structure
+
+<details>
+<summary>Click to expand!</summary>
+
+```bash
+## Project Structure
+📦src
+ ┣ 📂main
+ ┃ ┣ 📂java
+ ┃ ┃ ┗ 📂com
+ ┃ ┃ ┃ ┗ 📂fawry
+ ┃ ┃ ┃ ┃ ┗ 📂notificationService
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜KafkaConsumerConfig.java
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜Notification.java
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜NotificationController.java
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜NotificationRepo.java
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜NotificationRequest.java
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜NotificationService.java
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜NotificationServiceApplication.java
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜RetryFailedEmailJob.java
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜Status.java
+ ┃ ┗ 📂resources
+ ┃ ┃ ┣ 📂db
+ ┃ ┃ ┃ ┗ 📂migration
+ ┃ ┃ ┃ ┃ ┣ 📜V1__Notification_DB.sql
+ ┃ ┃ ┃ ┃ ┣ 📜V2__Notification_DB.sql
+ ┃ ┃ ┃ ┃ ┗ 📜V3__Add_Column_Retry_Amount.sql
+ ┃ ┃ ┣ 📂static
+ ┃ ┃ ┣ 📂templates
+ ┃ ┃ ┗ 📜application.properties
+ ┗ 📂test
+ ┃ ┗ 📂java
+ ┃ ┃ ┗ 📂com
+ ┃ ┃ ┃ ┗ 📂fawry
+ ┃ ┃ ┃ ┃ ┗ 📂notificationService
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜NotificationRepoTest.java
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜NotificationServiceTest.java
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜RetryFailedEmailJobTest.java
+```
+
+</details>
 
 ## Database Schema
 
