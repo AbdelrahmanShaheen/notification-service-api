@@ -18,21 +18,12 @@ public class NotificationService {
     private final NotificationRepo notificationRepo;
     private final JavaMailSender emailSender;
     private final Environment environment;
-
+    private final NotificationMapper notificationMapper;
     @KafkaListener(topics = "notificationTopic" ,groupId = "groupId")
     public void send(NotificationRequest notificationRequest){
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("${spring.mail.username}");
-        message.setTo(notificationRequest.getDestinationEmail());
-        message.setSubject(notificationRequest.getSubject());
-        message.setText(notificationRequest.getMsg());
-        Notification notification = Notification
-                                            .builder()
-                                            .content(notificationRequest.getMsg())
-                                            .destination(notificationRequest.getDestinationEmail())
-                                            .sentAt(new Date())
-                                            .subject(notificationRequest.getSubject())
-                                            .build();
+        log.info("New notification... {}", notificationRequest);
+        Notification notification = notificationMapper.toNotification(notificationRequest);
+        SimpleMailMessage message = Utils.createMessageFromNotification(notification);
         try{
             emailSender.send(message);
             notification.setStatus(Status.SENT);

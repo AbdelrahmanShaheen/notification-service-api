@@ -22,15 +22,10 @@ public class RetryFailedEmailJob {
 
     @Scheduled(cron = "${my.cron.expression}") // Schedule every 1 hour
     public void retryFailedEmails() {
-        SimpleMailMessage message = new SimpleMailMessage();
         notificationRepo.findByStatus(Status.FAILED)
                         .forEach(notification -> {
                             try {
-                                // Set message details
-                                message.setFrom("${spring.mail.username}");
-                                message.setTo(notification.getDestination());
-                                message.setSubject(notification.getSubject());
-                                message.setText(notification.getContent());
+                                SimpleMailMessage message = Utils.createMessageFromNotification(notification);
 
                                 emailSender.send(message);
 
