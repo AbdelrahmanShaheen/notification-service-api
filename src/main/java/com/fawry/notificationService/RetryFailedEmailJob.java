@@ -20,7 +20,7 @@ public class RetryFailedEmailJob {
     private final JavaMailSender emailSender;
     private final NotificationRepo notificationRepo;
 
-    @Scheduled(cron = "${my.cron.expression}") // Schedule every 1 hour
+    @Scheduled(cron = "${my.cron.expression}")
     public void retryFailedEmails() {
         notificationRepo.findByStatus(Status.FAILED)
                         .forEach(notification -> {

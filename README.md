@@ -17,7 +17,7 @@ The notification service is a Spring Boot application designed to handle notific
 
 | Methods | Endpoints                                |
 | :------ | :--------------------------------------- |
-| `POST`  | `/api/v1/notification`                   |
+| `POST`  | `/notification`                   |
 
 
 ## Test the API here:
@@ -40,12 +40,14 @@ The notification service is a Spring Boot application designed to handle notific
  ┃ ┃ ┃ ┃ ┃ ┣ 📜KafkaConsumerConfig.java
  ┃ ┃ ┃ ┃ ┃ ┣ 📜Notification.java
  ┃ ┃ ┃ ┃ ┃ ┣ 📜NotificationController.java
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜NotificationMapper.java
  ┃ ┃ ┃ ┃ ┃ ┣ 📜NotificationRepo.java
  ┃ ┃ ┃ ┃ ┃ ┣ 📜NotificationRequest.java
  ┃ ┃ ┃ ┃ ┃ ┣ 📜NotificationService.java
  ┃ ┃ ┃ ┃ ┃ ┣ 📜NotificationServiceApplication.java
  ┃ ┃ ┃ ┃ ┃ ┣ 📜RetryFailedEmailJob.java
- ┃ ┃ ┃ ┃ ┃ ┗ 📜Status.java
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜Status.java
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜Utils.java
  ┃ ┗ 📂resources
  ┃ ┃ ┣ 📂db
  ┃ ┃ ┃ ┗ 📂migration
